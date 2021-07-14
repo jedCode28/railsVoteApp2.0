@@ -1,7 +1,7 @@
 class ItemsController < ApplicationController
 
   def app 
-    render compnent: "App"
+    render component: "App"
   end 
 
 end

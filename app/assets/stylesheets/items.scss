@@ -1,3 +1,41 @@
 // Place all the styles related to the items controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+
+h1 {
+  color: orange;
+}
+
+.items-container {
+  background-color: gray;
+  padding: 10px;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+
+}
+
+.item-container {
+  background: white; 
+  margin: 10px;
+  border: 2px solid black;
+
+  display: flex;
+  flex-direction: column;
+
+  .item-header {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  h1 {
+    color: lightblue;
+    
+  }
+
+  .item-footer {
+    display: flex;
+    justify-content: space-between;
+  }
+
+}
