@@ -5,3 +5,18 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+require "faker"
+
+categories = ["food", "travel", "misc"]
+
+10.times do |i| 
+  Item.create(
+    name: Faker::Hacker.abbreviation,
+    description: Faker::Hacker.say_something_smart,
+    category: categories.sample,
+    likes: i,
+  )
+end 
+
+puts "seeded #{Item.all.size} Items"
