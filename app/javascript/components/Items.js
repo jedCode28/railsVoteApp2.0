@@ -16,6 +16,7 @@ const Items = (props) => {
     <>
       <div className='items-container'>
         <h1>{header ? header : 'Items'}</h1>
+        <p>items-container</p>
         {renderItems()}
       </div>
     </>

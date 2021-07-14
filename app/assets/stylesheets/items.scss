@@ -26,11 +26,16 @@ h1 {
   .item-header {
     display: flex;
     justify-content: space-between;
+
+    div {
+      display: flex;
+    }
+
   }
 
   h1 {
     color: lightblue;
-    
+
   }
 
   .item-footer {
