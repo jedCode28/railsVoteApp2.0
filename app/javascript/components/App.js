@@ -25,6 +25,34 @@ const App = () => {
     }
   }
 
+  deleteItem = async () => {
+    try {
+      let res = await axios.delete(`/items/${id}`)
+       //response.data should be the thing deleted
+       // remove id from UI
+       //filter id out if items in new array with filter
+      let filterItems = items.filter( i.id !== id )
+       // setItems with newArray
+       setItems(items)
+    }catch(err){
+      
+    }
+  }
+
+  // const getItemsNoAsync = () => {                   <--------- Old ES5 way of doing callbacks
+  //   // promiseCall().then((res)=>{}).catch((err)=>{})
+  //   axios.get('/items').then((res)=>{
+  //     // finished: success
+  //     setLoading(false)
+  //     setItems(res.data)
+  //   }).catch(err)=>{
+  //     // finished: success
+  //     console.log(err)
+  //     alert('error in api')
+  //     setLoading(false)
+  //   })
+  // }
+
   return(
   <>
     <h1>App</h1>
