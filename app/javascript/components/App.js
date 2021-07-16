@@ -8,6 +8,12 @@ const dummyData = [
 ]
 
 const App = () => {
+  const handleError = (error) => {
+    console.log(error)
+    alert('error in api')
+  }
+
+
   const [items, setItems] = useState([])
   const [loading, setLoading] = useState(false)
 
@@ -19,23 +25,29 @@ const App = () => {
     setLoading(false)
     setItems(res.data)
     } catch(err){
-      console.log(err)
-      alert('error in axios')
+      handleError(err)
       setLoading(false)
     }
   }
 
-  deleteItem = async () => {
+  const deleteItem = async (id) => {
+    console.log('clicked, ID:', id)
     try {
-      let res = await axios.delete(`/items/${id}`)
+
+      // let res = await axios.delete(`/items/${id}`)  <-- TODO later
+
        //response.data should be the thing deleted
        // remove id from UI
        //filter id out if items in new array with filter
-      let filterItems = items.filter( i.id !== id )
+
+      let filterItems = items.filter( i => i.id !== id )
+
        // setItems with newArray
-       setItems(items)
+
+       setItems(filterItems)
     }catch(err){
-      
+      handleError(err)
+      setLoading(false)
     }
   }
 
@@ -57,7 +69,7 @@ const App = () => {
   <>
     <h1>App</h1>
     <button disabled={loading} onClick={getItems}>{loading ? 'loading' : 'getItems'}</button>
-    <Items header='Items yo' items={items} />
+    <Items deleteItem={deleteItem} header='Items yo' items={items} />
   </>
   )
 }

@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Item = (props) => {
-  const {id, category, name, description, likes} = props
+  const {id, category, name, description, likes, deleteItem} = props
   return (
     <div className='item-container'>
         <div className='item-header'>
@@ -13,7 +13,7 @@ const Item = (props) => {
       </div>
       <p>{description}</p>
       <div className='item-footer'>   
-        <p>delete</p>
+        <p onClick={()=> deleteItem(id)}>delete</p>
         <p>edit</p>
         <p>Id: {id}</p>
       </div>

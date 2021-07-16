@@ -2,13 +2,13 @@ import React from 'react';
 import Item from './Item';
 
 const Items = (props) => {
-  const {header, items} = props
+  const {header, items, deleteItem } = props
   
   const renderItems = () => {
     if(items.length == 0){
       return <p>no items</p>
     }
-    return items.map( item => <Item key={item.id} {...item} />)
+    return items.map( item => <Item deleteItem={deleteItem} key={item.id} {...item} />)
   }
 
 
