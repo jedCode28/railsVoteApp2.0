@@ -34,7 +34,7 @@ const App = () => {
     console.log('clicked, ID:', id)
     try {
 
-      // let res = await axios.delete(`/items/${id}`)  <-- TODO later
+      let res = await axios.delete(`/items/${id}`) 
 
        //response.data should be the thing deleted
        // remove id from UI
