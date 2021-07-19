@@ -1,9 +1,13 @@
 class ItemsController < ApplicationController
 
+
+  ### just to get started, using ssrr
   def app 
     render component: "App"
   end 
 
+  
+  ### These are rendering JSON to the front end, basically API calls
   def index
     @items = Item.order(likes: :desc)
     render json: @items

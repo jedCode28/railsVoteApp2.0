@@ -47,11 +47,16 @@ const App = () => {
     }
   }
 
-  const addItem = (obj) => {
+  const addItem = async (obj) => {
     console.log(obj)
-    // want to add to db
-
+    // want to add to db 
+    try{
+    let res = await axios.post('/items', {...obj, likes:0 })
     // then update UI in App.js
+    setItems([...items, res.data])
+    } catch(err){
+      handleError(err)
+    }
   }
 
   // const getItemsNoAsync = () => {                   <--------- Old ES5 way of doing callbacks
