@@ -1,11 +1,7 @@
 import React, { useState } from 'react';
 import Items from './Items';
 import axios from 'axios';
-
-const dummyData = [
-{id: 1, category: 'cat1', name: 'jon', likes: 2, description: 'desc'},
-{id: 2, category: 'cat2', name: 'jon2', likes: 3, description: 'desc1'},
-]
+import ItemForm from './ItemForm';
 
 const App = () => {
   const handleError = (error) => {
@@ -51,6 +47,13 @@ const App = () => {
     }
   }
 
+  const addItem = (obj) => {
+    console.log(obj)
+    // want to add to db
+
+    // then update UI in App.js
+  }
+
   // const getItemsNoAsync = () => {                   <--------- Old ES5 way of doing callbacks
   //   // promiseCall().then((res)=>{}).catch((err)=>{})
   //   axios.get('/items').then((res)=>{
@@ -69,6 +72,7 @@ const App = () => {
   <>
     <h1>App</h1>
     <button disabled={loading} onClick={getItems}>{loading ? 'loading' : 'getItems'}</button>
+    <ItemForm addItem={addItem}/>
     <Items deleteItem={deleteItem} header='Items yo' items={items} />
   </>
   )
