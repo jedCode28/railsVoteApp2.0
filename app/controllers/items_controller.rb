@@ -22,6 +22,16 @@ class ItemsController < ApplicationController
     end 
   end 
 
+  def update
+    @item = Item.find(params[:id])
+
+    if(@item.update(items_params))
+      render json: @item
+    else
+      render json: {error: 422, message: @item.errors.full_messages}
+    end 
+  end 
+
   def destroy
     @item = Item.find(params[:id]).destroy
     render json: @item

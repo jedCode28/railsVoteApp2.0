@@ -62,18 +62,12 @@ const App = () => {
   const updateItem = async (itemObj, id) => {
     try {
       let res = await axios.put(`/items/${id}`, itemObj)
-      // let updateItems = items.map(item => {
-      //   if(item.id !== id){
-      //     return item
-      //   } else {
-      //     return res.data
-      //   }
 
       let updateItems = items.map(i => i.id !== id ? i : res.data )
 
       setItems(updateItems)
     } catch(err){
-  
+      handleError(err)
     }
   }
 
