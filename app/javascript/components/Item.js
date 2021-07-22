@@ -29,7 +29,7 @@ const Item = (props) => {
   return (
     <div className='item-container'>  
       {!showForm && renderItem()}
-      {showForm && <ItemForm setShowForm={setShowForm }/>}
+      {showForm && <ItemForm id={id} setShowForm={setShowForm} category={category} name={name} description={description} />}
     </div>
   )
 }

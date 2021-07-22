@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 
 const ItemForm = (props) => {
-  const [name, setName] = useState('')
-  const [category, setCategory] = useState('')
-  const [description, setDescription] = useState('')
+  const {addItem, setShowForm, category:catty, name:nammy, description:descy, id} = props
 
-  const {addItem, setShowForm} = props
+  const [name, setName] = useState(nammy ? nammy : '')
+  const [category, setCategory] = useState(catty ? catty : '')
+  const [description, setDescription] = useState(descy ? descy : '')
+
+  
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -20,6 +22,7 @@ const ItemForm = (props) => {
 
   return(
     <form onSubmit={handleSubmit}>
+      <h1>{id ? `Editing ${id}` : "Add Item"}</h1>
       <p>name</p>
       <input
         value={name}
@@ -35,7 +38,8 @@ const ItemForm = (props) => {
         value={description}
         onChange={(e)=> setDescription(e.target.value)}
       />
-      <button>add</button>
+      <br />
+      <button type='submit'>{id ? 'Edit' : 'Add'}</button>
       {setShowForm && <button onClick={() => setShowForm(false)}>cancel</button>} 
     </form>
   )
