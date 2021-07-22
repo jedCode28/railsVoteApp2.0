@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 
 const ItemForm = (props) => {
-  const {addItem, setShowForm, category:catty, name:nammy, description:descy, id} = props
+  const {addItem, setShowForm, category:catty, name:nammy, description:descy, id, updateItem} = props
 
   const [name, setName] = useState(nammy ? nammy : '')
   const [category, setCategory] = useState(catty ? catty : '')
@@ -12,8 +12,14 @@ const ItemForm = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     // here are the fields
-    addItem({name, category, description})
-
+    if(id){
+      updateItem({name, category, description}, id)
+      //toggle form here
+      setShowForm(false)
+    } else {
+      addItem({name, category, description})  
+    }
+    
     // clears form
     setDescription('')
     setCategory('')

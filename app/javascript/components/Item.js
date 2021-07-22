@@ -3,7 +3,7 @@ import React, {useState} from 'react';
 import ItemForm from './ItemForm';
 
 const Item = (props) => {
-  const {id, category, name, description, likes, deleteItem} = props
+  const {id, category, name, description, likes, deleteItem, updateItem} = props
   const [showForm, setShowForm] = useState(false)
   const renderItem = () => {
     return (
@@ -29,7 +29,7 @@ const Item = (props) => {
   return (
     <div className='item-container'>  
       {!showForm && renderItem()}
-      {showForm && <ItemForm id={id} setShowForm={setShowForm} category={category} name={name} description={description} />}
+      {showForm && <ItemForm id={id} updateItem={updateItem} setShowForm={setShowForm} category={category} name={name} description={description} />}
     </div>
   )
 }

@@ -59,6 +59,24 @@ const App = () => {
     }
   }
 
+  const updateItem = async (itemObj, id) => {
+    try {
+      let res = await axios.put(`/items/${id}`, itemObj)
+      // let updateItems = items.map(item => {
+      //   if(item.id !== id){
+      //     return item
+      //   } else {
+      //     return res.data
+      //   }
+
+      let updateItems = items.map(i => i.id !== id ? i : res.data )
+
+      setItems(updateItems)
+    } catch(err){
+  
+    }
+  }
+
   // const getItemsNoAsync = () => {                   <--------- Old ES5 way of doing callbacks
   //   // promiseCall().then((res)=>{}).catch((err)=>{})
   //   axios.get('/items').then((res)=>{
@@ -78,7 +96,7 @@ const App = () => {
     <h1>App</h1>
     <button disabled={loading} onClick={getItems}>{loading ? 'loading' : 'getItems'}</button>
     <ItemForm addItem={addItem}/>
-    <Items deleteItem={deleteItem} header='Items yo' items={items} />
+    <Items updateItem={updateItem} deleteItem={deleteItem} header='Items yo' items={items} />
   </>
   )
 }
