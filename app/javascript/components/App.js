@@ -85,12 +85,24 @@ const App = () => {
   //   })
   // }
 
+  const upVote = async (id) => {
+    console.log(id)
+    try {
+      let res = await axios.put(`/items/${id}/upvote`)
+      let updatedItems = items.map(i => i.id !== id ? i : res.data)
+      updatedItems.sort((a,b) => b.likes - a.likes)
+      setItems(updatedItems)
+    }catch(err){
+      handleError(err)
+    }
+  }
+
   return(
   <>
-    <h1>App</h1>
+    <h1>Full CRUD with Likes App</h1>
     <button disabled={loading} onClick={getItems}>{loading ? 'loading' : 'getItems'}</button>
     <ItemForm addItem={addItem}/>
-    <Items updateItem={updateItem} deleteItem={deleteItem} header='Items yo' items={items} />
+    <Items upVote={upVote} updateItem={updateItem} deleteItem={deleteItem} header='Items Exist Below Here' items={items} />
   </>
   )
 }

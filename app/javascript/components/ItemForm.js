@@ -27,20 +27,23 @@ const ItemForm = (props) => {
   }
 
   return(
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} style={styles.formContainer}>
       <h1>{id ? `Editing ${id}` : "Add Item"}</h1>
       <p>name</p>
       <input
+        style={styles.input}
         value={name}
         onChange={(e)=> setName(e.target.value)}
       />
       <p>category</p>
       <input 
+        style={styles.input}
         value={category}
         onChange={(e)=> setCategory(e.target.value)}
       />
       <p>description</p>
       <input 
+        style={styles.input}
         value={description}
         onChange={(e)=> setDescription(e.target.value)}
       />
@@ -49,6 +52,19 @@ const ItemForm = (props) => {
       {setShowForm && <button onClick={() => setShowForm(false)}>cancel</button>} 
     </form>
   )
+}
+
+const styles = {
+  formContainer: {
+    border: '10px',
+    margin: '10px',
+    padding: '10px',
+  },
+  input: {
+    width: '600px',
+    height: '20px',
+    marginBottom: '10px',
+  }
 }
 
 export default ItemForm

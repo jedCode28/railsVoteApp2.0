@@ -32,6 +32,13 @@ class ItemsController < ApplicationController
     end 
   end 
 
+  def upvote
+    @item = Item.find(params[:id])
+    @item.likes += 1
+    @item.save
+    render json: @item
+  end 
+
   def destroy
     @item = Item.find(params[:id]).destroy
     render json: @item
